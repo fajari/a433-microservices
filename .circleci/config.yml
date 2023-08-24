@@ -20,11 +20,16 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - setup_remote_docker
       - run: ./build_push_image_karsajobs.sh
 workflows:
   version: 2
   test-and-build:
     jobs:
       - lint-dockerfile
-      - test-app
-      - build-app-karsajobs
+      - test-app:
+          requires:
+            - lint-dockerfile
+      - build-app-karsajobs:
+          requires:
+            - test-app
