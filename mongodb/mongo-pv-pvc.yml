@@ -2,10 +2,11 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mongo-pv
+  namespace: dicoding
   labels:
     type: local
 spec:
-  storageClassName: manual
+  storageClassName: hostpath
   capacity:
     storage: 1Gi
   accessModes:
@@ -19,8 +20,9 @@ metadata:
   name: mongo-pvc
   labels:
     app: mongo
+  namespace: dicoding
 spec:
-  storageClassName: manual
+  storageClassName: hostpath
   accessModes:
     - ReadWriteOnce
   resources:

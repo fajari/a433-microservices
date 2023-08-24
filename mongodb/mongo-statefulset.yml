@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo
+  namespace: dicoding
   labels:
     app: mongo
 spec:
@@ -9,7 +10,7 @@ spec:
     matchLabels:
       app: mongo
   serviceName: mongo
-  replicas: 2
+  replicas: 1
   minReadySeconds: 10
   template:
     metadata:

@@ -4,6 +4,7 @@ metadata:
   name: karsajobs-ui
   labels:
     app: karsajobs-ui
+  namespace: dicoding
 spec:
   replicas: 1
   selector:
