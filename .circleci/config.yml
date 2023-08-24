@@ -20,7 +20,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: build_push_image_karsajobs.sh
+      - run: ./build_push_image_karsajobs.sh
 workflows:
   version: 2
   test-and-build:
