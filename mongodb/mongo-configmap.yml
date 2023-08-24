@@ -4,6 +4,7 @@ metadata:
   name: mongo-config
   namespace: dicoding
 data:
+  # Konfigurasi MongoDB
   mongo.conf: |
     storage:
       dbPath: /data/db

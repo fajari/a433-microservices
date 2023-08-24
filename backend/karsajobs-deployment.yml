@@ -18,16 +18,22 @@ spec:
     spec:
       containers:
         - name: karsajobs
+          # Image diambil dari Github Container Registry
           image: ghcr.io/nekoto-kun/karsajobs:latest
+          # Pull image jika belum ada
           imagePullPolicy: IfNotPresent
+          # Tanpa resource request dan limit
           resources: {}
           ports:
             - containerPort: 8080
           env:
+            # Port yang digunakan oleh aplikasi
             - name: APP_PORT
               value: "8080"
+            # Hostname dari MongoDB
             - name: MONGO_HOST
               value: "mongo.dicoding.svc.cluster.local"
+            # Username dan password MongoDB yang diambil dari secret
             - name: MONGO_USER
               valueFrom:
                 secretKeyRef:

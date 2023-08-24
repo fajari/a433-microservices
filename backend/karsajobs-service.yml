@@ -6,6 +6,7 @@ metadata:
   name: karsajobs
   namespace: dicoding
 spec:
+  # Menggunakan tipe NodePort supaya bisa diakses dari luar cluster
   ports:
     - port: 8080
       nodePort: 30001

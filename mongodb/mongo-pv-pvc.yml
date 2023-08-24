@@ -6,14 +6,19 @@ metadata:
   labels:
     type: local
 spec:
+  # StorageClass hostpath yang disediakan K8s Docker Desktop
   storageClassName: hostpath
+  # Kapasitas 1 GiB
   capacity:
     storage: 1Gi
+  # Mode akses RW hanya oleh satu node
   accessModes:
     - ReadWriteOnce
+  # Lokasi data
   hostPath:
     path: /data/db
 ---
+# Klaim PV seutuhnya
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
