@@ -27,7 +27,7 @@ spec:
             - name: APP_PORT
               value: "8080"
             - name: MONGO_HOST
-              value: "mongo.default.svc.cluster.local"
+              value: "mongo.dicoding.svc.cluster.local"
             - name: MONGO_USER
               valueFrom:
                 secretKeyRef:
