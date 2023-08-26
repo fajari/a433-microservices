@@ -19,3 +19,6 @@ spec:
           resources: {}
           ports:
             - containerPort: 3000
+          env:
+            - name: AMQP_URL
+              value: amqp://rabbitmq.rabbit.svc.cluster.local:5672
