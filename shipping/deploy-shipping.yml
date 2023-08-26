@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: ecommerce
+spec:
+  selector:
+    matchLabels:
+      app: shipping
+  template:
+    metadata:
+      labels:
+        app: shipping
+    spec:
+      containers:
+        - name: shipping
+          image: ghcr.io/nekoto-kun/shipping-service:latest
+          imagePullPolicy: IfNotPresent
+          resources: {}
+          ports:
+            - containerPort: 3001

@@ -1,0 +1,37 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: order
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - ingress-gateway
+  http:
+    - match:
+        - uri:
+            exact: /order
+      route:
+        - destination:
+            host: order.ecommerce.svc.cluster.local
+            port:
+              number: 3000
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: shipping
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - ingress-gateway
+  http:
+    - match:
+        - uri:
+            exact: /shipping
+      route:
+        - destination:
+            host: shipping.ecommerce.svc.cluster.local
+            port:
+              number: 3001
