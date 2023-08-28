@@ -1,2 +1,0 @@
-https://github.com/nekoto-kun/a433-microservices/pkgs/container/karsajobs
-https://github.com/nekoto-kun/a433-microservices/pkgs/container/karsajobs-ui
