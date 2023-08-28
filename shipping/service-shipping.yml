@@ -1,10 +1,13 @@
+# Service untuk shipping di namespace ecommerce dengan port 3001
 apiVersion: v1
 kind: Service
 metadata:
   name: shipping
   namespace: ecommerce
 spec:
+  # Berdasarkan label app: shipping
   selector:
     app: shipping
+  # Port 3001
   ports:
     - port: 3001

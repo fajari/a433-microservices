@@ -1,11 +1,14 @@
+# Membuat namespace ecommerce untuk deployment order dan shipping
 apiVersion: v1
 kind: Namespace
 metadata:
   name: ecommerce
   labels:
     name: ecommerce
+    # Menambahkan label istio-injection: enabled supaya semua pod di namespace ecommerce akan terpasang istio-proxy
     istio-injection: enabled
 ---
+# Membuat namespace rabbit untuk deployment rabbitmq (tanpa istio-proxy)
 apiVersion: v1
 kind: Namespace
 metadata:

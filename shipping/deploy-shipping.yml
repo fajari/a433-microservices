@@ -1,17 +1,21 @@
+# Deployment untuk shipping di namespace ecommerce dengan port 3001
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shipping
   namespace: ecommerce
 spec:
+  # Berdasarkan label app: shipping
   selector:
     matchLabels:
       app: shipping
   template:
     metadata:
+      # Menambahkan label version: latest
       labels:
         app: shipping
         version: latest
+      # Menambahkan annotation untuk limitasi resource yang digunakan oleh istio-proxy
       annotations:
         sidecar.istio.io/proxyCPU: 25m
         sidecar.istio.io/proxyCPULimit: 50m
@@ -19,12 +23,21 @@ spec:
         sidecar.istio.io/proxyMemoryLimit: 64Mi
     spec:
       containers:
+        # Menambahkan container shipping
         - name: shipping
+          # Menggunakan image dari Github Container Registry
           image: ghcr.io/nekoto-kun/shipping-service:latest
+          # Pull image jika belum ada
           imagePullPolicy: IfNotPresent
+          # Tidak ada resource request dan limit
           resources: {}
+          # Container port 3001
           ports:
             - containerPort: 3001
+          # Environment variable PORT dan AMQP_URL
           env:
+            - name: PORT
+              value: "3001"
             - name: AMQP_URL
+              # Alamat endpoint RabbitMQ di namespace rabbit dengan username dan password test
               value: amqp://test:test@10.1.5.86:5672

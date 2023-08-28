@@ -1,10 +1,13 @@
+# Service untuk order di namespace ecommerce dengan port 3000
 apiVersion: v1
 kind: Service
 metadata:
   name: order
   namespace: ecommerce
 spec:
+  # Berdasarkan label app: order
   selector:
     app: order
+  # Port 3000
   ports:
     - port: 3000
