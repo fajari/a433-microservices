@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: order
-  namespace: ecommerce
 spec:
   hosts:
     - "*"
@@ -22,7 +21,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: shipping
-  namespace: ecommerce
 spec:
   hosts:
     - "*"

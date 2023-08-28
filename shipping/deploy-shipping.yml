@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: shipping
+        version: latest
       annotations:
         sidecar.istio.io/proxyCPU: 25m
         sidecar.istio.io/proxyCPULimit: 50m
@@ -26,7 +27,4 @@ spec:
             - containerPort: 3001
           env:
             - name: AMQP_URL
-              valueFrom:
-                secretKeyRef:
-                  name: rabbit-cred
-                  key: AMQP_URL
+              value: amqp://test:test@10.1.5.86:5672
