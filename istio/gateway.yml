@@ -1,0 +1,17 @@
+# Membuat Gateway untuk mengakses service order dan shipping dari luar cluster
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ingress-gateway
+spec:
+  # Selector ini mengarah ke istio-ingressgateway yang sudah terpasang di namespace istio-system
+  selector:
+    istio: ingressgateway
+  # Membuat port gateway untuk protokol http dari luar cluster
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
