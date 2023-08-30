@@ -1,2 +1,0 @@
-# Instalasi RabbitMQ via Helm (langsung dari Bitnami) di namespace rabbit
-helm install rabbitmq oci://registry-1.docker.io/bitnamicharts/rabbitmq --namespace rabbit
