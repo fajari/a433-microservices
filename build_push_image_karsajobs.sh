@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Menjalankan build image
-echo "Membuat image..."
-docker build -t ghcr.io/nekoto-kun/karsajobs:latest .
+# proses build applikasi item-app
+docker build -t item-app:v1 .
 
-# Melakukan login ke GitHub Container Registry
-echo "Melakukan login ke GitHub Container Registry..."
-echo $CR_PAT | docker login ghcr.io -u nekoto-kun --password-stdin
+# menampilkan hasil build
+docker images
 
-# Melakukan push image ke GitHub Container Registry
-echo "Melakukan push image ke GitHub Container Registry..."
-docker push ghcr.io/nekoto-kun/karsajobs:latest
+# membuat tag dari hasil build
+docker tag item-app:v1 fajari/item-app:v1
 
-# Selesai
-echo "Selesai"
+# login ke dockerhub
+docker login -u fajari
+
+# mengirimkan hasi image ke repository
+docker push fajari/item-app:v1
